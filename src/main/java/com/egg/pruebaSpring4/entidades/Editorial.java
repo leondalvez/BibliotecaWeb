@@ -8,12 +8,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Editorial {
-
-    @Id
+    
     ///Esta anotación hace que la id se genere de forma automatica 
     ///al momento que el repositorio persista la entidad
-    @GeneratedValue(generator = "uuid")
     ///Con ésta anotación tenemos una estrategia alternativa
+    @GeneratedValue(generator = "uuid")
+    @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;

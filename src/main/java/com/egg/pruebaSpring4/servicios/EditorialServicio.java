@@ -1,6 +1,7 @@
 package com.egg.pruebaSpring4.servicios;
 
 import com.egg.pruebaSpring4.entidades.Editorial;
+import com.egg.pruebaSpring4.excepciones.MiExcepcion;
 import com.egg.pruebaSpring4.repositorios.EditorialRepositorio;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,10 @@ public class EditorialServicio {
     EditorialRepositorio editorialRepositorio;
 
     @Transactional
-    public void crearEditorial(String nombre) {
-
+    public void crearEditorial(String nombre) throws MiExcepcion {
+        if (nombre.isEmpty()|| nombre==null) {
+            throw new MiExcepcion("El valor de Nombre no puede ser nulo");
+        }
         Editorial editorial = new Editorial();
         editorial.setNombre(nombre);
 
@@ -34,7 +37,7 @@ public class EditorialServicio {
     }
     
     @Transactional
-    public void modificarEditorial(String id, String nombre) {
+    public void modificarEditorial(String nombre, String id) {
 
         Optional<Editorial> respuesta = editorialRepositorio.findById(id);
 
@@ -46,5 +49,9 @@ public class EditorialServicio {
 
             editorialRepositorio.save(editorial);
         }
+    }
+    
+    public Editorial getOne(String id){
+        return editorialRepositorio.getOne(id);
     }
 }

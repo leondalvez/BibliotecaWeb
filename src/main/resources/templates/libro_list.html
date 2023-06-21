@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Libro Lista</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+            />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Biblioteca</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8080">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/libro/registrar">Registrar Libro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/autor/registrar">Registrar Autor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/editorial/registrar">Registrar Editorial</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+         <header>
+      <div class="container-fluid text-center text-bg-primary">
+        <h2>Lista de Libros </h2>
+      </div>
+    </header>
+        <div class="container m-5">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Ejemplares</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Editorial</th>
+                    </tr>
+                </thead>
+
+                <tbody th:each="libro : ${libros}">
+                    <tr>
+                        <th scope="row" th:text="${libro.isbn}"></th>
+                        <td th:text="${libro.titulo}"></td>
+                        <td th:text="${libro.ejemplares}"></td>
+                        <td th:text="${libro.autor.nombre}"></td>
+                        <td th:text="${libro.editorial.nombre}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

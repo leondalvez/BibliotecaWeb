@@ -38,6 +38,7 @@ public class AutorServicio {
         return autores;
     }
     
+    @Transactional
     public void modificarAutor(String nombre, String id) {
 
         Optional<Autor> respuesta = autorRepositorio.findById(id);
@@ -50,6 +51,10 @@ public class AutorServicio {
 
             autorRepositorio.save(autor);
         }
+    }
+    
+    public Autor getOne(String id){
+        return autorRepositorio.getOne(id);
     }
     
 }

@@ -4,8 +4,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /// Anotación que da cuenta de que éste libro va a ser una entidad.
 @Entity
@@ -18,7 +16,7 @@ public class Libro {
     private Integer ejemplares;
 
     ///Anotación de que el dato es de tipo fecha.
-    @Temporal(TemporalType.DATE)
+    @javax.persistence.Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date alta;
 
     ///Muchos libros un autor
@@ -78,8 +76,5 @@ public class Libro {
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
-    
-    
-}
 
-     
+}
